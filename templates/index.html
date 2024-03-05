@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>ALGO FRIEND - Your DSA Companion </title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha384-ez9KoG7yfZG1iRAnzph2M5P5QNLH/PR9BPXpj2cXs7txCv6+fCITkUSXGo+ISFib" crossorigin="anonymous">
+</head>
+
+
+<body>
+
+    <header class="navbar">
+        <div class="dologo">
+            <a href=" #" class="logo-container">
+                <img src="{{ url_for('static', path='/images/mylogo.png') }}" alt="AlgoFriend Logo" class="logim"
+                    style="width: 80px; height: 60px;">
+            </a>
+            <div class="nava"> Your DSA Campanion !
+            </div>
+        </div>
+        <div class="header-info">
+            <h1 class="logo-name">Algo Friend</h1>
+        </div>
+        <div class="containerhd">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#home-section"><span>&#8962;</span> <!-- Home icon -->
+
+
+                        Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#news"> <span>&#128240;</span> <!-- News icon -->News</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#res"> <span>&#128218;</span> <!-- Resource icon -->Resourses</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#about-section"><span>&#8505;</span>About</a>
+                </li>
+
+            </ul>
+        </div>
+
+    </header>
+    <div class="container">
+
+        <section id="home-section">
+            <h1>Welcome to our website</h1>
+            <h1>AlgoFriend - DSA Question Search Engine</h1>
+            <p>AlgoFriend is your go-to resource for DSA (Data Structures and Algorithms) questions to help you prepare
+                for competitive programming. Our platform provides a wide range of practice questions, covering various
+                topics in DSA. Enhance your problem-solving skills and master the algorithms with AlgoFriend.</p>
+            <div class="checkboxes">
+                <h1>To Get Video recommendation (Check box 2)</h1>
+                <form action="/submit/" method="get">
+                    <label>
+                        <input type="checkbox" name="checkbox1" id="checkbox1"> Practice Problem
+                        (Default Checked)
+                    </label>
+                    <br>
+                    <label>
+                        <input type="checkbox" name="checkbox2" id="checkbox2"> Video recommendation for Question
+                    </label>
+                    <br>
+                    <button type="submit">Submit</button>
+                </form>
+
+                <br>
+            </div>
+            <form action="/search/" method="get">
+                <div class="search-container">
+                    <input type="text" id="query" name="query" placeholder="Enter your query">
+                    <button type="submit" id="search-btn">Search</button>
+                </div>
+            </form>
+            <div class="quesdisplay" style="width: 600px;
+            height: 320px;">
+                {% if query %}
+                {% if results %}
+                <ul class="item-list">
+                    {% for result in results %}
+                    <li class="list-group-item">
+                        <a href="/question_page?problem_link={{ result['Link'] }}" target="_blank">{{ result['Link Name'] }}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                <h1 class="no-results">Sorry !</h1>
+                <p class="no-results">No matching question found </p>
+                <p class="no-results">Please search with more relevant terms </p>
+                {% endif %}
+                {% else %}
+                <h1 class="no-results">Welcome! </h1>
+                <p class="no-results">Please enter your search query above </p>
+                <p class="no-results">Thanks DSA Aspirant for Visiting our Websites</p>
+                {% endif %}
+
+
+            </div>
+        </section>
+    </div>
+    <div class="lower_section" id="news">
+        <div>
+            <h1>NEWS</h1>
+        </div>
+        <section class="service-container">
+            <div class="service-box">
+                <span class="service-icon"><img src="{{ url_for('static', path='/images/harward.jpg') }}" alt="Image"
+                        class="imagi" style="width: 300px; height: 200px;"></span>
+                <h3 class="service-title"><a
+                        href="https://www.newsnationnow.com/us-news/education/harvard-ai-instructor-coding-course/"
+                        class="title_news">Harvard to debut AI instructor for coding course</a></h3>
+                <p class="service-description">Harvard University will be using an AI bot to help students in an
+                    introductory course learn to code.</p>
+            </div>
+            <div class="service-box">
+                <span class="service-icon"><img src="{{ url_for('static', path='/images/csprog5.jpg') }}" alt="Image"
+                        class="imagi" style="width: 300px; height: 200px;"></span>
+                <h3 class="service-title"><a
+                        href="https://www.analyticsinsight.net/top-5-programming-languages-to-learn-for-cybersecurity/"
+                        class="title_news">Top 5 Programming languages To Learn For Cybersecurity</a></h3>
+                <p class="service-description">
+                    Become a top-notch cybersecurity professional with these 5 programming Languages today! Read more
+                    and explore which one suits you the best.</p>
+            </div>
+            <div class="service-box">
+                <span class="service-icon"><img src="{{ url_for('static', path='/images/codingjobs.jpg') }}" alt="Image"
+                        class="imagi" style="width: 300px; height: 200px;"></span>
+                <h3 class="service-title"><a
+                        href="https://cointelegraph.com/news/5-worldwide-websites-to-find-remote-coding-jobs"
+                        class="title_news">5 worldwide websites to find remote coding jobs</a></h3>
+                <p class="service-description">
+                    Discover exciting remote coding job options that match your skills and work from anywhere in the
+                    world.
+                </p>
+            </div>
+            <div class="service-box">
+                <span class="service-icon"><img src="{{ url_for('static', path='/images/kids.jpg') }}" alt="Image"
+                        class="imagi" style="width: 300px; height: 200px;"></span>
+                <h3 class="service-title"><a
+                        href="https://www.analyticsinsight.net/10-best-programming-languages-for-kids/"
+                        class="title_news">10 Best programming languages for Kids</a></h3>
+                <p class="service-description">
+                    Explore the 10 best programming languages for kids to gain skills and fundamental concepts like
+                    Scratch, Python, Java, Etc.</p>
+            </div>
+            <div class="service-box">
+                <span class="service-icon"><img src="{{ url_for('static', path='/images/dubai.jpg') }}" alt="Image"
+                        class="imagi" style="width: 300px; height: 200px;"></span>
+                <h3 class="service-title"><a
+                        href="https://www.khaleejtimes.com/uae/dubai-student-recognised-with-diana-award-for-empowering-girls-through-coding-education"
+                        class="title_news">Dubai student recognised with Diana Award for empowering girls through coding
+                        education</a></h3>
+                <p class="service-description">
+                    A Dubai student who has served as an inspiration for girls in both the UAE and India to pursue
+                    coding, has been honoured with the esteemed...</p>
+            </div>
+            <div class="service-box">
+                <span class="service-icon"><img src="{{ url_for('static', path='/images/codinggames.jpg') }}"
+                        alt="Image" class="imagi" style="width: 300px; height: 200px;"></span>
+                <h3 class="service-title"><a href="5 Best Coding Games to Learn Programming for Beginners"
+                        class="title_news">5 Best Coding Games to Learn Programming for Beginners</a></h3>
+                <p class="service-description"> In this article, we take a look at the 5 best coding games to learn
+                    programming for beginners.</p>
+            </div>
+        </section>
+    </div>
+    <div class="container">
+        <div>
+            <h1>RESOURCES</h1>
+        </div>
+        <section class="calender_container">
+            <div class="container">
+                <div class="header">
+                    <h2>July 2023</h2>
+                    <div class="updates">
+                        <p>Updates:</p>
+                        <ul>
+                            <li>Codeforces Contest on 2nd and 15th</li>
+                            <li>CodeChef Contest on 17th</li>
+                            <li>HackerRank Contest on 19th</li>
+                            <li>AtCoder Contest on 25th</li>
+                            <li>LeetCode Contest on 17th</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="calendar">
+                    <div class="weekdays">
+                        <div>Sun</div>
+                        <div>Mon</div>
+                        <div>Tue</div>
+                        <div>Wed</div>
+                        <div>Thu</div>
+                        <div>Fri</div>
+                        <div>Sat</div>
+                    </div>
+                    <div class="days">
+                        <div class="day other-month">28</div>
+                        <div class="day other-month">29</div>
+                        <div class="day other-month">30</div>
+                        <div class="day other-month">1</div>
+                        <div class="day">2 <span class="contest">Codeforces</span></div>
+                        <div class="day">3</div>
+                        <div class="day">4</div>
+                        <div class="day">5</div>
+                        <div class="day">6</div>
+                        <div class="day">7</div>
+                        <div class="day">8</div>
+                        <div class="day">9 <span class="contest">Codeforces</span></div>
+                        <div class="day">10</div>
+                        <div class="day">11</div>
+                        <div class="day">12</div>
+                        <div class="day">13</div>
+                        <div class="day">14</div>
+                        <div class="day">15 <span class="contest">Codeforces</span></div>
+                        <div class="day">16</div>
+                        <div class="day">17 <span class="contest">CodeChef</span></div>
+                        <div class="day">18</div>
+                        <div class="day">19 <span class="contest">HackerRank</span></div>
+                        <div class="day">20</div>
+                        <div class="day">21</div>
+                        <div class="day">22</div>
+                        <div class="day">23</div>
+                        <div class="day">24</div>
+                        <div class="day">25 <span class="contest">AtCoder</span></div>
+                        <div class="day">26</div>
+                        <div class="day">27</div>
+                        <div class="day">28</div>
+                        <div class="day">29</div>
+                        <div class="day">30</div>
+                        <div class="day other-month">31</div>
+                        <div class="day other-month">1</div>
+                        <div class="day other-month">2</div>
+                        <div class="day other-month">3</div>
+                        <div class="day other-month">4</div>
+                        <div class="day other-month">5</div>
+                        <div class="day other-month">6</div>
+                        <div class="day other-month">7</div>
+                        <div class="day other-month">8</div>
+                        <div class="day other-month">9</div>
+                        <div class="day other-month">10</div>
+                        <div class="day other-month">11</div>
+                        <div class="day other-month">12</div>
+                        <div class="day other-month">13</div>
+                        <div class="day other-month">14</div>
+                        <div class="day other-month">15</div>
+                        <div class="day other-month">16</div>
+                        <div class="day other-month">17 <span class="contest">LeetCode</span></div>
+                        <div class="day other-month">18</div>
+                        <div class="day other-month">19</div>
+                        <div class="day other-month">20</div>
+                        <div class="day other-month">21</div>
+                        <div class="day other-month">22</div>
+                        <div class="day other-month">23</div>
+                        <div class="day other-month">24</div>
+                        <div class="day other-month">25</div>
+                        <div class="day other-month">26</div>
+                        <div class="day other-month">27</div>
+                        <div class="day other-month">28</div>
+                        <div class="day other-month">29</div>
+                        <div class="day other-month">30</div>
+                        <div class="day other-month">31</div>
+                    </div>
+                </div>
+                <div id="event-details"></div>
+                <div id="contest-results"></div>
+            </div>
+        </section>
+
+        <section class="service-grid" id="res">
+            <div class="service-box1">
+                <i class="fa fa-code"></i>
+                <h3><a href="https://www.hackerrank.com/">HackerRank:</a></h3>
+                <p>HackerRank is a platform that offers coding challenges and competitions to help programmers improve
+                    their skills and prepare for coding interviews.</p>
+            </div>
+            <div class="service-box1">
+                <i class="fa fa-paint-brush"></i>
+                <h3><a href="https://leetcode.com/">LeetCode:</a></h3>
+                <p>LeetCode provides a vast collection of coding questions, algorithm challenges, and mock interviews to
+                    help programmers enhance their coding abilities and prepare for technical interviews.</p>
+            </div>
+            <div class="service-box1">
+                <i class="fa fa-camera"></i>
+                <h3><a href="https://www.codechef.com/">CodeChef:</a></h3>
+                <p>CodeChef is an Indian-based competitive programming platform that hosts regular contests, practice
+                    problems, and algorithmic challenges for programmers of all skill levels.</p>
+            </div>
+            <div class="service-box1">
+                <i class="fa fa-mobile"></i>
+                <h3><a href="https://codeforces.com/">Codeforces:</a></h3>
+                <p>Codeforces is an online coding platform that hosts competitive programming contests. It also provides
+                    a wide range of problems for practice and a supportive community.</p>
+            </div>
+            <div class="service-box1">
+                <i class="fa fa-cogs"></i>
+                <h3><a href="https://www.geeksforgeeks.org//">GeeksforGeeks:</a></h3>
+                <p>GeeksforGeeks is a well-known platform for computer science resources, including coding articles,
+                    tutorials, practice problems, and interview preparation materials.</p>
+            </div>
+            <div class="service-box1">
+                <i class="fa fa-wrench"></i>
+                <h3><a href="https://atcoder.jp/">Atcoder:</a></h3>
+                <p>AtCoder is a Japanese competitive programming platform that offers contests and practice problems. It
+                    is popular among competitive programmers worldwide.
+                    Feel free to explore these platforms to enhance your coding skills, solve </p>
+            </div>
+        </section>
+    </div>
+    <div class="about-section">
+        <section id="about">
+            <h2>About Me - Abhishek Choudhary</h2>
+            <p>I'm Abhishek Choudhary, a proactive 3rd-year undergraduate student at IIT Kharagpur, specializing in
+                Mechanical Engineering with a focus on Machine Learning and AI. My passion lies in leveraging technology
+                and engineering principles to drive innovation and solve complex problems. I possess a solid foundation
+                in Artificial Intelligence and have developed expertise in Machine Learning and Data Analyst. With
+                proficiency in Scikit-Learn, PyTorch, TensorFlow, and Keras, I have experience in building deep learning
+                models. I have also worked with Flask and FastAPI for developing scalable APIs, automation tools like
+                Requests, and Selenium and Web Scraping Tools like Beautiful soup and SciPy.</p>
+
+            <h3>Technical Skills</h3>
+            <table class="skills-table">
+                <tr>
+                    <th>Programming Languages</th>
+                    <td>Python, C++, C, MATLAB, SQL</td>
+                </tr>
+                <tr>
+                    <th>Machine Learning Frameworks</th>
+                    <td>Scikit-Learn, PyTorch, TensorFlow, Keras</td>
+                </tr>
+                <tr>
+                    <th>Web Development</th>
+                    <td>Flask, FastAPI, HTML, CSS</td>
+                </tr>
+                <tr>
+                    <th>Data Analysis &amp; Visualization</th>
+                    <td>NumPy, Pandas, Matplotlib, Seaborn</td>
+                </tr>
+                <tr>
+                    <th>Other Tools &amp; Libraries</th>
+                    <td>OpenCV, Beautiful Soup, SciPy</td>
+                </tr>
+            </table>
+
+            <p>If you are interested in collaborating on projects or discussing research opportunities in the areas of
+                Machine Learning or AI, I would be delighted to connect. Let's engage in insightful discussions and
+                explore new opportunities together.</p>
+        </section>
+    </div>
+
+
+    <footer class="footer">
+        <p>&copy; 2023 AlgoFriend. All rights reserved.</p>
+        <div class="social-icons">
+            <a href="https://www.linkedin.com/your-linkedin-profile" target="_blank" rel="noopener noreferrer"
+                title="LinkedIn">
+                <i class="fab fa-linkedin"></i>
+                <span class="sr-only">LinkedIn</span>
+            </a>
+            <a href="https://www.facebook.com/your-facebook-profile" target="_blank" rel="noopener noreferrer"
+                title="Facebook">
+                <i class="fab fa-facebook"></i>
+                <span class="sr-only">Facebook</span>
+            </a>
+            <a href="https://github.com/your-github-profile" target="_blank" rel="noopener noreferrer" title="GitHub">
+                <i class="fab fa-github"></i>
+                <span class="sr-only">GitHub</span>
+            </a>
+            <a href="https://www.instagram.com/your-instagram-profile" target="_blank" rel="noopener noreferrer"
+                title="Instagram">
+                <i class="fab fa-instagram"></i>
+                <span class="sr-only">Instagram</span>
+            </a>
+        </div>
+    </footer>
+
+
+
+    <script src="{{ url_for('static', path='/js/scripts.js') }}"></script>
+</body>
+
+</html>
